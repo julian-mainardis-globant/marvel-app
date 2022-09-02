@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">marvelApp</string>
+    <string name="text_view_main_activity">Marvel App</string>
+    <string name="text_view_desc_main_activity">This is a new app to see all the characters from marvel</string>
+    <string name="button_text_main_activity">GO TO THE APP</string>
+    <string name="title_character_list_activity">Characters</string>
 </resources>

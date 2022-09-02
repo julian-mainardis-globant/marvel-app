@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_main_activity">50dp</dimen>
+    <dimen name="title_size_main_activity">50sp</dimen>
+    <dimen name="button_text_size_main_activity">20sp</dimen>
+    <dimen name="text_view_desc_size_main_activity">25sp</dimen>
+    <dimen name="padding_text_description_main_activity">20dp</dimen>
+    <dimen name="width_and_height_animation_splash_activity">250dp</dimen>
+</resources>
