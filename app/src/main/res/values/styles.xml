@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="text_description_main_activity">
+        <item name="android:padding">@dimen/padding_text_description_main_activity</item>
+        <item name="android:text">@string/text_view_desc_main_activity</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">#F85454</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_view_desc_size_main_activity</item>
+    </style>
+
+    <style name="text_title_main_activity">
+        <item name="android:layout_marginBottom">@dimen/margin_main_activity</item>
+        <item name="android:text">@string/text_view_main_activity</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/button_color_main_activity</item>
+        <item name="android:textSize">@dimen/title_size_main_activity</item>
+    </style>
+
+    <style name="button_main_activity">
+        <item name="android:layout_marginTop">@dimen/margin_main_activity</item>
+        <item name="android:backgroundTint">@color/button_color_main_activity</item>
+        <item name="android:text">@string/button_text_main_activity</item>
+        <item name="android:textSize">@dimen/button_text_size_main_activity</item>
+    </style>
+</resources>
