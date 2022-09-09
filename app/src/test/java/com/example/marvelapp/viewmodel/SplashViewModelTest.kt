@@ -1,7 +1,7 @@
-package com.example.marvelapp
+package com.example.marvelapp.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.marvelapp.mvvm.viewmodel.SplashActivityViewModel
+import com.example.marvelapp.mvvm.viewmodel.SplashViewModel
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -13,25 +13,25 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class SplashViewModelTest {
 
-    private lateinit var splashActivityViewModel: SplashActivityViewModel
+    private lateinit var splashActivityViewModel: SplashViewModel
 
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
 
     @Before
     fun init() {
-        splashActivityViewModel = SplashActivityViewModel()
+        splashActivityViewModel = SplashViewModel()
     }
 
     @Test
     fun startAnimTest() {
         splashActivityViewModel.startAnim()
-        Assert.assertEquals(splashActivityViewModel.animState.value?.state, SplashActivityViewModel.SplashState.INITIAL)
+        Assert.assertEquals(splashActivityViewModel.animState.value?.state, SplashViewModel.SplashState.INITIAL)
     }
 
     @Test
     fun endedAnimTest() {
         splashActivityViewModel.endedAnim()
-        Assert.assertEquals(splashActivityViewModel.animState.value?.state, SplashActivityViewModel.SplashState.ENDED)
+        Assert.assertEquals(splashActivityViewModel.animState.value?.state, SplashViewModel.SplashState.ENDED)
     }
 }

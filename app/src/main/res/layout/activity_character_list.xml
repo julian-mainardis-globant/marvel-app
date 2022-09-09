@@ -5,38 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/marvel_wp"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.CharacterListActivity">
 
     <TextView
-        android:id="@+id/title_main_activity"
+        android:id="@+id/title_character_list_activity"
         style="@style/text_title_main_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_main_activity"
-        android:text="@string/text_view_main_activity"
-        app:layout_constraintBottom_toTopOf="@id/desc_main_activity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/desc_main_activity"
-        style="@style/text_description_main_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_view_desc_main_activity"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/margin_main_activity"
+        android:text="@string/title_character_list_activity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_main_activity"
-        style="@style/button_main_activity"
+    <TextView
+        android:id="@+id/characters_list_characters_activity"
+        style="@style/text_description_main_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_text_main_activity"
+        android:text="@string/desc_text_view_list_characters"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/desc_main_activity" />
+        app:layout_constraintTop_toBottomOf="@id/title_character_list_activity" />
+
+    <ProgressBar
+        android:id="@+id/characters_list_loader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/button_color_main_activity"
+        app:layout_constraintTop_toBottomOf="@id/characters_list_characters_activity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
