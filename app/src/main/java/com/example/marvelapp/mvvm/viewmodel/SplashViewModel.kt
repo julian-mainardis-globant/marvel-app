@@ -4,14 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SplashActivityViewModel : ViewModel() {
+class SplashViewModel : ViewModel() {
 
     private var _animState: MutableLiveData<SplashData> = MutableLiveData()
-
     val animState: LiveData<SplashData>
-        get() {
-            return _animState
-        }
+        get() = _animState
 
     fun startAnim() {
         _animState.value = SplashData(SplashState.INITIAL)
