@@ -27,7 +27,7 @@ class CharacterListViewModel(private val model: CharacterListModel) : ViewModel(
                     _characterState.postValue(CharacterData(state = CharacterState.RESPONSE_SUCCESS, data = result.data))
                 }
                 is Result.Failure -> {
-                    if(result.exception.message.equals(NOT_FOUND)){
+                    if (result.exception.message.equals(NOT_FOUND)) {
                         _characterState.postValue(CharacterData(state = CharacterState.RESPONSE_ERROR_NOT_FOUND))
                     } else {
                         _characterState.postValue(CharacterData(state = CharacterState.RESPONSE_ERROR))

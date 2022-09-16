@@ -6,6 +6,6 @@
     <string name="title_character_list_activity">Characters</string>
     <string name="desc_text_view_list_characters">List of characters</string>
     <string name="character_list_loader">Loading</string>
-    <string name="character_list_error_not_found">Characters not found</string>
+    <string name="character_list_error_not_found">Characters not found, please check if your internet is working</string>
     <string name="character_list_general_error">Something happened, try again later</string>
 </resources>

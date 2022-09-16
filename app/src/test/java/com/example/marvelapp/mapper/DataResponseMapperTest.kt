@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.marvelapp.api.response.CharacterResponse
 import com.example.marvelapp.api.response.DataResponse
 import com.example.marvelapp.api.response.ResultResponse
-import com.example.marvelapp.api.util.transformToCharacterList
+import com.example.marvelapp.api.util.transformToLocalCharacterList
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -14,7 +14,7 @@ import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class CharacterMapperTest {
+class DataResponseMapperTest {
 
     private lateinit var dataResponse: DataResponse
     private lateinit var resultResponse: ResultResponse
@@ -29,8 +29,8 @@ class CharacterMapperTest {
     }
 
     @Test
-    fun `transform CharacterData response to list of characters`() {
-        val response = dataResponse.transformToCharacterList()
+    fun `transform data response to local character list`() {
+        val response = dataResponse.transformToLocalCharacterList()
         assertEquals(response[0].id, resultResponse.results[0].id)
         assertEquals(response[0].name, resultResponse.results[0].name)
         assertEquals(response[0].description, resultResponse.results[0].description)

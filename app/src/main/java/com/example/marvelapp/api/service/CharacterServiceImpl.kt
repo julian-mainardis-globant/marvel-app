@@ -2,7 +2,7 @@ package com.example.marvelapp.api.service
 
 import com.example.marvelapp.api.MarvelApi
 import com.example.marvelapp.api.util.Result
-import com.example.marvelapp.api.util.transformToCharacterList
+import com.example.marvelapp.api.util.transformToLocalCharacterList
 import com.example.marvelapp.entity.Character
 
 class CharacterServiceImpl(private val api: ServiceGenerator) : CharacterService {
@@ -13,7 +13,7 @@ class CharacterServiceImpl(private val api: ServiceGenerator) : CharacterService
             val response = callResponse.execute()
             if (response.isSuccessful)
                 response.body()?.let {
-                    return Result.Success(it.transformToCharacterList())
+                    return Result.Success(it.transformToLocalCharacterList())
                 }
         } catch (e: Exception) {
             return Result.Failure(e)
