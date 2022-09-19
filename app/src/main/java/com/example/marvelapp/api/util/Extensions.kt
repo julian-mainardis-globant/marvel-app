@@ -1,6 +1,7 @@
 package com.example.marvelapp.api.util
 
 import com.example.marvelapp.api.response.DataResponse
+import com.example.marvelapp.api.response.ImageResponse
 import com.example.marvelapp.database.entity.CharacterEntity
 import com.example.marvelapp.entity.Character
 
@@ -11,7 +12,8 @@ fun DataResponse.transformToLocalCharacterList(): List<Character> {
             Character(
                 it.id,
                 it.name,
-                it.description
+                it.description,
+                it.image.getPathAndExtension()
             )
         )
     }
@@ -22,7 +24,8 @@ fun CharacterEntity.transformToLocalCharacter(): Character {
     return Character(
         this.id,
         this.name,
-        this.description
+        this.description,
+        this.imageURL
     )
 }
 
@@ -30,8 +33,13 @@ fun Character.transformToCharacterEntity(): CharacterEntity {
     return CharacterEntity(
         this.id,
         this.name,
-        this.description
+        this.description,
+        this.imageURL
     )
+}
+
+fun ImageResponse.getPathAndExtension(): String {
+    return "${this.path}.${this.extension}"
 }
 
 fun List<CharacterEntity>.transformToLocalCharacterList(): List<Character> =

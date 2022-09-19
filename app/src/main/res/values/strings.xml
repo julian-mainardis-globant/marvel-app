@@ -4,8 +4,9 @@
     <string name="text_view_desc_main_activity">This is a new app to see all the characters from marvel</string>
     <string name="button_text_main_activity">GO TO THE APP</string>
     <string name="title_character_list_activity">Characters</string>
-    <string name="desc_text_view_list_characters">List of characters</string>
     <string name="character_list_loader">Loading</string>
     <string name="character_list_error_not_found">Characters not found, please check if your internet is working</string>
     <string name="character_list_general_error">Something happened, try again later</string>
+    <string name="subtitle_list_characters">List of characters</string>
+    <string name="empty_description">This character has no description</string>
 </resources>
