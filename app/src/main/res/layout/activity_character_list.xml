@@ -18,12 +18,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_character_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_main_activity"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_subtitle_characters_activity" />
+
     <TextView
-        android:id="@+id/characters_list_characters_activity"
+        android:id="@+id/text_view_subtitle_characters_activity"
         style="@style/text_description_main_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/desc_text_view_list_characters"
+        android:text="@string/subtitle_list_characters"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_character_list_activity" />
@@ -33,7 +43,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_main_activity"
         android:indeterminateTint="@color/button_color_main_activity"
-        app:layout_constraintTop_toBottomOf="@id/characters_list_characters_activity" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

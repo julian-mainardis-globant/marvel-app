@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.marvelapp.R
+import com.example.marvelapp.api.util.CharacterAdapter
 import com.example.marvelapp.databinding.ActivityCharacterListBinding
 import com.example.marvelapp.entity.Character
 import com.example.marvelapp.mvvm.viewmodel.CharacterListViewModel
@@ -17,6 +18,7 @@ class CharacterListActivity : AppCompatActivity(), KoinComponent {
 
     private lateinit var binding: ActivityCharacterListBinding
     private val viewModel: CharacterListViewModel by inject()
+    private lateinit var characterAdapter: CharacterAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,18 +38,20 @@ class CharacterListActivity : AppCompatActivity(), KoinComponent {
     }
 
     private fun showCharacters(characterList: List<Character>) {
+        characterAdapter = CharacterAdapter(characterList)
         binding.charactersListLoader.visibility = View.GONE
-        binding.charactersListCharactersActivity.text = characterList.toString()
+        binding.textViewSubtitleCharactersActivity.visibility = View.GONE
+        binding.recyclerViewCharacterList.adapter = characterAdapter
     }
 
     private fun showError(messageId: Int) {
         binding.charactersListLoader.visibility = View.GONE
-        binding.charactersListCharactersActivity.text = getString(messageId)
+        binding.textViewSubtitleCharactersActivity.text = getString(messageId)
     }
 
     private fun showLoading() {
         binding.charactersListLoader.visibility = View.VISIBLE
-        binding.charactersListCharactersActivity.text = getString(R.string.character_list_loader)
+        binding.textViewSubtitleCharactersActivity.text = getString(R.string.character_list_loader)
     }
 
     companion object {
