@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.marvelapp.api.util.Result
 import com.example.marvelapp.entity.Character
 import com.example.marvelapp.mvvm.model.CharacterListModel
+import com.example.marvelapp.util.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -27,7 +28,7 @@ class CharacterListViewModel(private val model: CharacterListModel) : ViewModel(
                     _characterState.postValue(CharacterData(state = CharacterState.RESPONSE_SUCCESS, data = result.data))
                 }
                 is Result.Failure -> {
-                    if (result.exception.message.equals(NOT_FOUND)) {
+                    if (result.exception.message.equals(Constants.NOT_FOUND)) {
                         _characterState.postValue(CharacterData(state = CharacterState.RESPONSE_ERROR_NOT_FOUND))
                     } else {
                         _characterState.postValue(CharacterData(state = CharacterState.RESPONSE_ERROR))
@@ -37,19 +38,21 @@ class CharacterListViewModel(private val model: CharacterListModel) : ViewModel(
         }
     }
 
+    fun onCharacterPressed(characterId: String) {
+        _characterState.value = CharacterData(CharacterState.CHARACTER_PRESSED, idCharacter = characterId)
+    }
+
     data class CharacterData(
-        var state: CharacterState,
-        var data: List<Character> = emptyList()
+        val state: CharacterState,
+        val data: List<Character> = emptyList(),
+        val idCharacter: String = Constants.EMPTY_STRING
     )
 
     enum class CharacterState {
         RESPONSE_LOADING,
         RESPONSE_SUCCESS,
         RESPONSE_ERROR,
-        RESPONSE_ERROR_NOT_FOUND
-    }
-
-    companion object {
-        private const val NOT_FOUND = "NOT_FOUND"
+        RESPONSE_ERROR_NOT_FOUND,
+        CHARACTER_PRESSED
     }
 }

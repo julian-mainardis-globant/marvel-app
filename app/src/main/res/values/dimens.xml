@@ -8,4 +8,7 @@
     <dimen name="width_and_height_animation_splash_activity">250dp</dimen>
     <dimen name="width_character_image">150dp</dimen>
     <dimen name="height_character_image">150dp</dimen>
+    <dimen name="padding_character_detail_fragment">20dp</dimen>
+    <dimen name="width_image_view_fragment">250dp</dimen>
+    <dimen name="height_image_view_fragment">250dp</dimen>
 </resources>

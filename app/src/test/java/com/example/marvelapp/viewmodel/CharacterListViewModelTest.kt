@@ -7,6 +7,7 @@ import com.example.marvelapp.mvvm.model.CharacterListModel
 import com.example.marvelapp.mvvm.viewmodel.CharacterListViewModel
 import com.example.marvelapp.testObserver
 import com.example.marvelapp.usecase.GetCharactersUseCase
+import com.example.marvelapp.util.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -83,7 +84,7 @@ class CharacterListViewModelTest {
     fun `when getCharacters return failure result with not found error`() {
         val liveData = viewModel.characterState.testObserver()
 
-        whenever(getCharactersUseCase()).thenReturn(Result.Failure(Exception(NOT_FOUND)))
+        whenever(getCharactersUseCase()).thenReturn(Result.Failure(Exception(Constants.NOT_FOUND)))
 
         runBlocking {
             viewModel.getCharacters().join()
@@ -91,9 +92,5 @@ class CharacterListViewModelTest {
 
         assertEquals(CharacterListViewModel.CharacterState.RESPONSE_LOADING, liveData.observedValues[0]?.state)
         assertEquals(CharacterListViewModel.CharacterState.RESPONSE_ERROR_NOT_FOUND, liveData.observedValues[1]?.state)
-    }
-
-    companion object {
-        private const val NOT_FOUND = "NOT_FOUND"
     }
 }

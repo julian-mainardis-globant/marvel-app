@@ -32,8 +32,8 @@ class ImageResponseMapperTest {
     }
 
     companion object {
-        const val PATH = "http://i.annihil.us/u/prod/marvel/i/mg/6/20/52602f21f29ec"
-        const val EXTENSION = "jpg"
-        const val URL = "$PATH.$EXTENSION"
+        private const val PATH = "http://i.annihil.us/u/prod/marvel/i/mg/6/20/52602f21f29ec"
+        private const val EXTENSION = "jpg"
+        private const val URL = "$PATH.$EXTENSION"
     }
 }

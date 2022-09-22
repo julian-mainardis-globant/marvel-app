@@ -2,7 +2,7 @@ package com.example.marvelapp.usecase
 
 import com.example.marvelapp.api.service.CharacterService
 import com.example.marvelapp.api.util.Result
-import com.example.marvelapp.database.MarvelDataBase
+import com.example.marvelapp.database.MarvelRepository
 import com.example.marvelapp.entity.Character
 
 interface GetCharactersUseCase {
@@ -11,7 +11,7 @@ interface GetCharactersUseCase {
 
 class GetCharactersUseCaseImpl(
     private val charactersService: CharacterService,
-    private val database: MarvelDataBase
+    private val database: MarvelRepository
 ) : GetCharactersUseCase {
     override operator fun invoke(): Result<List<Character>> {
         return when (val serviceResult = charactersService.getCharacters()) {

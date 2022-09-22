@@ -3,8 +3,9 @@ package com.example.marvelapp.usecase
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.marvelapp.api.service.CharacterService
 import com.example.marvelapp.api.util.Result
-import com.example.marvelapp.database.MarvelDataBase
+import com.example.marvelapp.database.MarvelRepository
 import com.example.marvelapp.entity.Character
+import com.example.marvelapp.util.Constants
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -21,7 +22,7 @@ class GetCharacterUseCaseTest {
 
     private lateinit var getCharactersUseCase: GetCharactersUseCase
     private val characterService: CharacterService = mock()
-    private val database: MarvelDataBase = mock()
+    private val database: MarvelRepository = mock()
     private val characterList: List<Character> = mock()
 
     @get:Rule
@@ -47,19 +48,19 @@ class GetCharacterUseCaseTest {
 
     @Test
     fun `when the service return a failure result and the database is empty`() {
-        whenever(characterService.getCharacters()).thenReturn(Result.Failure(Exception(NOT_FOUND)))
-        whenever(database.getAllCharacters()).thenReturn(Result.Failure(Exception(NOT_FOUND)))
+        whenever(characterService.getCharacters()).thenReturn(Result.Failure(Exception(Constants.NOT_FOUND)))
+        whenever(database.getAllCharacters()).thenReturn(Result.Failure(Exception(Constants.NOT_FOUND)))
 
         val result = getCharactersUseCase()
 
         verify(database).getAllCharacters()
 
-        assertEquals(NOT_FOUND, (result as Result.Failure).exception.message)
+        assertEquals(Constants.NOT_FOUND, (result as Result.Failure).exception.message)
     }
 
     @Test
     fun `when the service return a failure result and the database isn't empty`() {
-        whenever(characterService.getCharacters()).thenReturn(Result.Failure(Exception(NOT_FOUND)))
+        whenever(characterService.getCharacters()).thenReturn(Result.Failure(Exception(Constants.NOT_FOUND)))
         whenever(database.getAllCharacters()).thenReturn(Result.Success(characterList))
 
         val result = getCharactersUseCase()
@@ -67,9 +68,5 @@ class GetCharacterUseCaseTest {
         verify(database).getAllCharacters()
 
         assertEquals(characterList, (result as Result.Success).data)
-    }
-
-    companion object {
-        private const val NOT_FOUND = "NOT_FOUND"
     }
 }
