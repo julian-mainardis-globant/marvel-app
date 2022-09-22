@@ -26,9 +26,9 @@ class EntityCharacterMapperTest {
         characterEntity = CharacterEntity(id = ID, name = NAME, description = DESCRIPTION, imageURL = IMAGE_URL)
         characterEntityList = mutableListOf(
             CharacterEntity(
-                id = DataResponseMapperTest.ID,
-                name = DataResponseMapperTest.NAME,
-                description = DataResponseMapperTest.DESCRIPTION,
+                id = ID,
+                name = NAME,
+                description = DESCRIPTION,
                 imageURL = IMAGE_URL
             )
         )
@@ -51,9 +51,9 @@ class EntityCharacterMapperTest {
     }
 
     companion object {
-        const val ID = "1"
-        const val NAME = "Pepe"
-        const val DESCRIPTION = "Pepe es un buen samaritano"
-        const val IMAGE_URL = "http://i.annihil.us/u/prod/marvel/i/mg/6/20/52602f21f29ec.jpg"
+        private const val ID = "1"
+        private const val NAME = "Pepe"
+        private const val DESCRIPTION = "Pepe es un buen samaritano"
+        private const val IMAGE_URL = "http://i.annihil.us/u/prod/marvel/i/mg/6/20/52602f21f29ec.jpg"
     }
 }

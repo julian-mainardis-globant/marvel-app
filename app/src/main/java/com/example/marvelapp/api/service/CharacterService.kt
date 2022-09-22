@@ -5,4 +5,5 @@ import com.example.marvelapp.entity.Character
 
 interface CharacterService {
     fun getCharacters(): Result<List<Character>>
+    fun getCharacterById(characterId: String): Result<Character>
 }

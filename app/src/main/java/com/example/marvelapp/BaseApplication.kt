@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.marvelapp.di.ApiModule.apiModule
 import com.example.marvelapp.di.DataBaseModule.dataBaseModule
 import com.example.marvelapp.di.ModelModule.modelModule
+import com.example.marvelapp.di.RepositoryModule.repositoryModule
 import com.example.marvelapp.di.ServiceModule.serviceModule
 import com.example.marvelapp.di.UseCaseModule.useCaseModule
 import com.example.marvelapp.di.ViewModelModule.viewModelModule
@@ -24,7 +25,8 @@ class BaseApplication : Application(), KoinComponent {
                     serviceModule,
                     modelModule,
                     apiModule,
-                    dataBaseModule
+                    dataBaseModule,
+                    repositoryModule
                 )
             )
         }

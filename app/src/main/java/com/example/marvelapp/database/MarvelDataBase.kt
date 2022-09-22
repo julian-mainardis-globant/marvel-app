@@ -1,9 +1,13 @@
 package com.example.marvelapp.database
 
-import com.example.marvelapp.api.util.Result
-import com.example.marvelapp.entity.Character
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import com.example.marvelapp.database.entity.CharacterEntity
 
-interface MarvelDataBase {
-    fun getAllCharacters(): Result<List<Character>>
-    fun updateCharacters(characters: List<Character>)
+@Database(
+    entities = [CharacterEntity::class],
+    version = 1
+)
+abstract class MarvelDataBase : RoomDatabase() {
+    abstract fun marvelDao(): MarvelDao
 }

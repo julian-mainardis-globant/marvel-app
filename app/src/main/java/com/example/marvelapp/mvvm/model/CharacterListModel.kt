@@ -5,5 +5,6 @@ import com.example.marvelapp.entity.Character
 import com.example.marvelapp.usecase.GetCharactersUseCase
 
 class CharacterListModel(private val getCharactersUseCase: GetCharactersUseCase) {
+
     fun getCharacters(): Result<List<Character>> = getCharactersUseCase()
 }

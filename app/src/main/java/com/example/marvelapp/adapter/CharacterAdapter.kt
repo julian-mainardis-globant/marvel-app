@@ -1,4 +1,4 @@
-package com.example.marvelapp.api.util
+package com.example.marvelapp.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,14 @@ import com.example.marvelapp.R
 import com.example.marvelapp.databinding.CardViewCharacterItemBinding
 import com.example.marvelapp.entity.Character
 
-class CharacterAdapter(private val characters: List<Character>) : RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
+interface CharacterAdapterListener {
+    fun setOnClickListener(characterId: String)
+}
+
+class CharacterAdapter(
+    private val characters: List<Character>,
+    private val listener: CharacterAdapterListener
+) : RecyclerView.Adapter<CharacterAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -22,23 +29,21 @@ class CharacterAdapter(private val characters: List<Character>) : RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(characters[position])
+        holder.bind(characters[position], listener)
     }
 
     override fun getItemCount(): Int = characters.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = CardViewCharacterItemBinding.bind(itemView)
-        fun bind(item: Character) {
-            item.let {
-                binding.apply {
-                    this.characterName.text = item.name
-                    Glide.with(itemView.context).load(item.imageURL).into(this.characterImage);
-                    if (item.description.isNotEmpty()) {
-                        this.characterDesc.text = item.description
-                    } else {
-                        this.characterDesc.text = itemView.resources.getString(R.string.empty_description)
-                    }
+        fun bind(item: Character, listener: CharacterAdapterListener) {
+            binding.apply {
+                this.characterName.text = item.name
+                Glide.with(itemView.context)
+                    .load(item.imageURL)
+                    .into(this.characterImage)
+                binding.cardViewCharacterContainer.setOnClickListener {
+                    listener.setOnClickListener(item.id)
                 }
             }
         }

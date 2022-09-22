@@ -1,5 +1,6 @@
 package com.example.marvelapp.di
 
+import com.example.marvelapp.mvvm.viewmodel.CharacterDetailFragmentViewModel
 import com.example.marvelapp.mvvm.viewmodel.CharacterListViewModel
 import com.example.marvelapp.mvvm.viewmodel.MainViewModel
 import com.example.marvelapp.mvvm.viewmodel.SplashViewModel
@@ -11,5 +12,6 @@ object ViewModelModule {
         viewModel { SplashViewModel() }
         viewModel { MainViewModel() }
         viewModel { CharacterListViewModel(get()) }
+        viewModel { CharacterDetailFragmentViewModel(get()) }
     }
 }

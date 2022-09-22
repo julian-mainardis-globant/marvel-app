@@ -13,4 +13,7 @@ interface MarvelDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCharacter(character: CharacterEntity)
+
+    @Query("SELECT * FROM character_table WHERE id = :characterId")
+    fun getCharacterById(characterId: String): List<CharacterEntity>
 }

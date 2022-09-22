@@ -5,20 +5,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import com.example.marvelapp.R
-import com.example.marvelapp.api.util.CharacterAdapter
+import com.example.marvelapp.adapter.CharacterAdapter
+import com.example.marvelapp.adapter.CharacterAdapterListener
 import com.example.marvelapp.databinding.ActivityCharacterListBinding
 import com.example.marvelapp.entity.Character
+import com.example.marvelapp.fragment.CharacterDetailFragment
 import com.example.marvelapp.mvvm.viewmodel.CharacterListViewModel
 import com.example.marvelapp.mvvm.viewmodel.CharacterListViewModel.CharacterState.*
+import com.example.marvelapp.util.Constants
 import org.koin.android.ext.android.inject
 import org.koin.core.component.KoinComponent
 
-class CharacterListActivity : AppCompatActivity(), KoinComponent {
+class CharacterListActivity : AppCompatActivity(), KoinComponent, CharacterAdapterListener {
 
     private lateinit var binding: ActivityCharacterListBinding
     private val viewModel: CharacterListViewModel by inject()
-    private lateinit var characterAdapter: CharacterAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,14 +37,14 @@ class CharacterListActivity : AppCompatActivity(), KoinComponent {
             RESPONSE_ERROR -> showError(R.string.character_list_general_error)
             RESPONSE_ERROR_NOT_FOUND -> showError(R.string.character_list_error_not_found)
             RESPONSE_LOADING -> showLoading()
+            CHARACTER_PRESSED -> showCharacterDetail(characterData.idCharacter)
         }
     }
 
     private fun showCharacters(characterList: List<Character>) {
-        characterAdapter = CharacterAdapter(characterList)
         binding.charactersListLoader.visibility = View.GONE
         binding.textViewSubtitleCharactersActivity.visibility = View.GONE
-        binding.recyclerViewCharacterList.adapter = characterAdapter
+        binding.recyclerViewCharacterList.adapter = CharacterAdapter(characterList, this)
     }
 
     private fun showError(messageId: Int) {
@@ -52,6 +55,16 @@ class CharacterListActivity : AppCompatActivity(), KoinComponent {
     private fun showLoading() {
         binding.charactersListLoader.visibility = View.VISIBLE
         binding.textViewSubtitleCharactersActivity.text = getString(R.string.character_list_loader)
+    }
+
+    private fun showCharacterDetail(characterId: String) {
+        val characterDetailFragment = CharacterDetailFragment.newInstance(characterId)
+        val fragmentManager: FragmentManager = supportFragmentManager
+        characterDetailFragment.show(fragmentManager, Constants.TAG)
+    }
+
+    override fun setOnClickListener(characterId: String) {
+        viewModel.onCharacterPressed(characterId)
     }
 
     companion object {
