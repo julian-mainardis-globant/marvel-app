@@ -38,6 +38,7 @@ class SplashActivity : AppCompatActivity() {
                 anim?.setAnimationListener(null)
                 viewModel.endedAnim()
             }
+
             override fun onAnimationRepeat(anim: Animation?) {}
         })
     }

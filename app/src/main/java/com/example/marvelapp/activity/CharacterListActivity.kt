@@ -6,11 +6,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
+import com.example.domain.entity.Character
 import com.example.marvelapp.R
 import com.example.marvelapp.adapter.CharacterAdapter
 import com.example.marvelapp.adapter.CharacterAdapterListener
 import com.example.marvelapp.databinding.ActivityCharacterListBinding
-import com.example.marvelapp.entity.Character
 import com.example.marvelapp.fragment.CharacterDetailFragment
 import com.example.marvelapp.mvvm.viewmodel.CharacterListViewModel
 import com.example.marvelapp.mvvm.viewmodel.CharacterListViewModel.CharacterState.*

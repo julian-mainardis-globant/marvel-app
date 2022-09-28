@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.domain.entity.Character
 import com.example.marvelapp.R
 import com.example.marvelapp.databinding.CardViewCharacterItemBinding
-import com.example.marvelapp.entity.Character
 
 interface CharacterAdapterListener {
     fun setOnClickListener(characterId: String)
