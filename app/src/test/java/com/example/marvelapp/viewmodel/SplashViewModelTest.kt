@@ -12,7 +12,6 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class SplashViewModelTest {
-
     private lateinit var splashActivityViewModel: SplashViewModel
 
     @get:Rule

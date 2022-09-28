@@ -1,12 +1,12 @@
 package com.example.marvelapp
 
 import android.app.Application
-import com.example.marvelapp.di.ApiModule.apiModule
-import com.example.marvelapp.di.DataBaseModule.dataBaseModule
+import com.example.di.ApiModule.apiModule
+import com.example.di.DataBaseModule.dataBaseModule
+import com.example.di.RepositoryModule.repositoryModule
+import com.example.di.ServiceModule.serviceModule
+import com.example.di.UseCaseModule.useCaseModule
 import com.example.marvelapp.di.ModelModule.modelModule
-import com.example.marvelapp.di.RepositoryModule.repositoryModule
-import com.example.marvelapp.di.ServiceModule.serviceModule
-import com.example.marvelapp.di.UseCaseModule.useCaseModule
 import com.example.marvelapp.di.ViewModelModule.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.component.KoinComponent
